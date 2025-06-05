@@ -10,6 +10,11 @@ const About = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
   }, []);
 
   const education = [
@@ -50,19 +55,19 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex justify-between items-center">
-            <Link to="/" className="text-xl font-semibold text-gray-900">
+            <Link to="/" className="text-xl font-medium text-gray-900 tracking-tight hover:text-gray-700 transition-colors duration-300">
               Roberta Murad Lima
             </Link>
-            <div className="hidden md:flex space-x-10">
+            <div className="hidden md:flex space-x-12">
               {['Home', 'About', 'Experience', 'Contact'].map((item) => (
                 <Link
                   key={item}
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    item === 'About' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full ${
+                    item === 'About' ? 'text-gray-900 after:w-full' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item}
@@ -73,11 +78,11 @@ const About = () => {
         </div>
       </nav>
 
-      <div className="pt-32 pb-32 px-8">
-        <div className="max-w-7xl mx-auto">
+      <div className="pt-40 pb-40 px-8">
+        <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-5xl md:text-7xl font-light mb-8 text-gray-900 tracking-tight">
+          <div className={`text-center mb-32 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-5xl md:text-7xl font-light mb-12 text-gray-900 tracking-tight leading-none">
               About Me
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
@@ -87,17 +92,17 @@ const About = () => {
           </div>
 
           {/* Story Section */}
-          <Card className={`mb-16 border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          <Card className={`mb-20 border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '200ms' }}>
             <CardContent className="p-12">
-              <div className="flex items-center mb-8">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                  <BookOpen className="w-5 h-5 text-blue-600" />
+              <div className="flex items-center mb-10">
+                <div className="w-12 h-12 bg-blue-100/80 rounded-full flex items-center justify-center mr-6 hover:scale-110 hover:bg-blue-200/80 transition-all duration-300">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
                 </div>
                 <h2 className="text-2xl font-semibold text-gray-900">My Story</h2>
               </div>
-              <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+              <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-8">
                 <p>
                   My journey in nutrition and health began with a deep curiosity about how science can improve human wellbeing. 
                   With a foundation in Environmental Engineering, I discovered my true passion lay in the intersection of 
@@ -117,27 +122,27 @@ const About = () => {
           </Card>
 
           {/* Education Section */}
-          <div className={`mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          <div className={`mb-20 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '400ms' }}>
-            <div className="flex items-center mb-8">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <GraduationCap className="w-5 h-5 text-green-600" />
+            <div className="flex items-center mb-10">
+              <div className="w-12 h-12 bg-green-100/80 rounded-full flex items-center justify-center mr-6 hover:scale-110 hover:bg-green-200/80 transition-all duration-300">
+                <GraduationCap className="w-6 h-6 text-green-600" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">Education</h2>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {education.map((edu, index) => (
-                <Card key={edu.degree} className="border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <Card key={edu.degree} className="border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+                  <CardContent className="p-10">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{edu.degree}</h3>
-                        <p className="text-blue-600 font-medium">{edu.institution}</p>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3 hover:text-gray-700 transition-colors duration-300">{edu.degree}</h3>
+                        <p className="text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">{edu.institution}</p>
                       </div>
-                      <Badge variant="outline" className="w-fit mt-2 md:mt-0 bg-gray-50 border-gray-200">{edu.year}</Badge>
+                      <Badge variant="outline" className="w-fit mt-3 md:mt-0 bg-gray-50/80 border-gray-200 hover:bg-gray-100/80 hover:border-gray-300 transition-all duration-300">{edu.year}</Badge>
                     </div>
-                    <p className="text-gray-600 text-sm">{edu.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">{edu.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -145,26 +150,26 @@ const About = () => {
           </div>
 
           {/* Languages & Interests Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {/* Languages */}
-            <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '600ms' }}>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                    <Globe className="w-5 h-5 text-purple-600" />
+              <CardContent className="p-10">
+                <div className="flex items-center mb-8">
+                  <div className="w-12 h-12 bg-purple-100/80 rounded-full flex items-center justify-center mr-6 hover:scale-110 hover:bg-purple-200/80 transition-all duration-300">
+                    <Globe className="w-6 h-6 text-purple-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900">Languages</h3>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {languages.map((lang) => (
-                    <div key={lang.name} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <div key={lang.name} className="flex items-center justify-between p-5 rounded-2xl bg-gray-50/80 hover:bg-gray-100/80 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
                       <div className="flex items-center">
-                        <span className="text-xl mr-3">{lang.flag}</span>
+                        <span className="text-xl mr-4 hover:scale-110 transition-transform duration-300">{lang.flag}</span>
                         <span className="font-medium text-gray-900">{lang.name}</span>
                       </div>
-                      <Badge className="bg-white border-gray-200 text-gray-700">{lang.level}</Badge>
+                      <Badge className="bg-white/80 border-gray-200 text-gray-700 hover:bg-gray-50/80 transition-all duration-300">{lang.level}</Badge>
                     </div>
                   ))}
                 </div>
@@ -172,21 +177,21 @@ const About = () => {
             </Card>
 
             {/* Interests */}
-            <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '800ms' }}>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mr-4">
-                    <Heart className="w-5 h-5 text-pink-600" />
+              <CardContent className="p-10">
+                <div className="flex items-center mb-8">
+                  <div className="w-12 h-12 bg-pink-100/80 rounded-full flex items-center justify-center mr-6 hover:scale-110 hover:bg-pink-200/80 transition-all duration-300">
+                    <Heart className="w-6 h-6 text-pink-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900">Interests</h3>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-5">
                   {interests.map((interest) => (
-                    <div key={interest.name} className="text-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-                      <div className="text-2xl mb-2">{interest.icon}</div>
-                      <span className="text-sm font-medium text-gray-700">{interest.name}</span>
+                    <div key={interest.name} className="text-center p-6 rounded-2xl bg-gray-50/80 hover:bg-gray-100/80 transition-all duration-300 hover:scale-105 cursor-pointer group">
+                      <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">{interest.icon}</div>
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">{interest.name}</span>
                     </div>
                   ))}
                 </div>

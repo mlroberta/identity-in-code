@@ -10,6 +10,12 @@ const Index = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
   }, []);
 
   const highlights = [
@@ -36,18 +42,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-semibold text-gray-900">
+            <div className="text-xl font-medium text-gray-900 tracking-tight">
               Roberta Murad Lima
             </div>
-            <div className="hidden md:flex space-x-10">
+            <div className="hidden md:flex space-x-12">
               {['Home', 'About', 'Experience', 'Contact'].map((item) => (
                 <Link
                   key={item}
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {item}
                 </Link>
@@ -58,33 +64,33 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-32 px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-40 pb-40 px-8">
+        <div className="max-w-6xl mx-auto">
           <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-6xl md:text-8xl font-light mb-8 text-gray-900 tracking-tight">
+            <h1 className="text-6xl md:text-8xl font-light mb-12 text-gray-900 tracking-tight leading-none">
               Nutrition &
               <br />
               Innovation
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6 font-light leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
               Bridging the gap between cutting-edge research and real-world health solutions. 
               From ETH Zurich to industry leadership.
             </p>
-            <div className="flex items-center justify-center space-x-2 mb-12 text-gray-500">
+            <div className="flex items-center justify-center space-x-2 mb-16 text-gray-500">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Zurich, Switzerland</span>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-24">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-32">
               <Link to="/about">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+                <Button size="lg" className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-6 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95">
                   Discover My Journey
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="px-8 py-4 rounded-full border-gray-300 hover:bg-gray-50 transition-all duration-200 hover:scale-105 font-medium">
+                <Button variant="outline" size="lg" className="px-10 py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg">
                   Let's Connect
                 </Button>
               </Link>
@@ -92,21 +98,21 @@ const Index = () => {
           </div>
 
           {/* Highlights Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-24">
+          <div className="grid md:grid-cols-3 gap-8 mb-32">
             {highlights.map((highlight, index) => (
               <Card 
                 key={highlight.title}
-                className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 bg-white/70 backdrop-blur-xl shadow-lg ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`group hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:bg-white/80 cursor-pointer ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${200 + index * 150}ms` }}
               >
-                <CardContent className="p-8 text-center">
-                  <div className="w-12 h-12 mx-auto mb-6 rounded-full bg-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <highlight.icon className={`w-6 h-6 ${highlight.color}`} />
+                <CardContent className="p-10 text-center">
+                  <div className="w-14 h-14 mx-auto mb-8 rounded-full bg-gray-100/80 flex items-center justify-center group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-500">
+                    <highlight.icon className={`w-7 h-7 ${highlight.color} transition-transform duration-300 group-hover:scale-110`} />
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">{highlight.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{highlight.description}</p>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{highlight.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{highlight.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -114,8 +120,10 @@ const Index = () => {
 
           {/* Scroll Indicator */}
           <div className="text-center">
-            <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce mx-auto" />
-            <p className="text-gray-500 mt-2 text-sm">Scroll to explore</p>
+            <div className="inline-block animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
+              <ChevronDown className="w-6 h-6 text-gray-400 mx-auto" />
+            </div>
+            <p className="text-gray-500 mt-3 text-sm">Scroll to explore</p>
           </div>
         </div>
       </section>

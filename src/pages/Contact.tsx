@@ -22,6 +22,11 @@ const Contact = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -87,19 +92,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex justify-between items-center">
-            <Link to="/" className="text-xl font-semibold text-gray-900">
+            <Link to="/" className="text-xl font-medium text-gray-900 tracking-tight hover:text-gray-700 transition-colors duration-300">
               Roberta Murad Lima
             </Link>
-            <div className="hidden md:flex space-x-10">
+            <div className="hidden md:flex space-x-12">
               {['Home', 'About', 'Experience', 'Contact'].map((item) => (
                 <Link
                   key={item}
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    item === 'Contact' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full ${
+                    item === 'Contact' ? 'text-gray-900 after:w-full' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item}
@@ -110,11 +115,11 @@ const Contact = () => {
         </div>
       </nav>
 
-      <div className="pt-32 pb-32 px-8">
-        <div className="max-w-7xl mx-auto">
+      <div className="pt-40 pb-40 px-8">
+        <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-5xl md:text-7xl font-light mb-8 text-gray-900 tracking-tight">
+          <div className={`text-center mb-32 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-5xl md:text-7xl font-light mb-12 text-gray-900 tracking-tight leading-none">
               Let's Connect
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
@@ -124,21 +129,21 @@ const Contact = () => {
           </div>
 
           {/* Contact Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid lg:grid-cols-2 gap-16 mb-20">
             {/* Contact Form */}
-            <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '200ms' }}>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-8">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                    <Send className="w-5 h-5 text-blue-600" />
+              <CardContent className="p-10">
+                <div className="flex items-center mb-10">
+                  <div className="w-12 h-12 bg-blue-100/80 rounded-full flex items-center justify-center mr-6 hover:scale-110 hover:bg-blue-200/80 transition-all duration-300">
+                    <Send className="w-6 h-6 text-blue-600" />
                   </div>
                   <h2 className="text-xl font-semibold text-gray-900">Send a Message</h2>
                 </div>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="name" className="text-gray-700 font-medium text-sm">Name</Label>
                       <Input
@@ -147,7 +152,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                        className="mt-3 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white/80 hover:bg-white transition-all duration-300 py-6"
                         placeholder="Your name"
                       />
                     </div>
@@ -160,7 +165,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                        className="mt-3 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white/80 hover:bg-white transition-all duration-300 py-6"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -174,7 +179,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                      className="mt-3 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white/80 hover:bg-white transition-all duration-300 py-6"
                       placeholder="What's this about?"
                     />
                   </div>
@@ -188,7 +193,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                      className="mt-3 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white/80 hover:bg-white transition-all duration-300"
                       placeholder="Tell me about your project or how we can work together..."
                     />
                   </div>
@@ -196,7 +201,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">
@@ -206,7 +211,7 @@ const Contact = () => {
                     ) : (
                       <div className="flex items-center">
                         Send Message
-                        <Send className="ml-2 w-4 h-4" />
+                        <Send className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </div>
                     )}
                   </Button>
@@ -215,27 +220,27 @@ const Contact = () => {
             </Card>
 
             {/* Contact Info & Reasons */}
-            <div className="space-y-8">
+            <div className="space-y-10">
               {/* Contact Information */}
-              <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`} style={{ transitionDelay: '400ms' }}>
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Get in Touch</h3>
-                  <div className="space-y-4">
+                <CardContent className="p-10">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-8">Get in Touch</h3>
+                  <div className="space-y-5">
                     {contactInfo.map((info) => (
-                      <div key={info.title} className="flex items-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                          <info.icon className="w-5 h-5 text-gray-600" />
+                      <div key={info.title} className="flex items-center p-5 rounded-2xl bg-gray-50/80 hover:bg-gray-100/80 transition-all duration-300 hover:scale-[1.02] cursor-pointer group">
+                        <div className="w-12 h-12 bg-gray-100/80 rounded-full flex items-center justify-center mr-6 group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-300">
+                          <info.icon className="w-5 h-5 text-gray-600 group-hover:text-gray-800 transition-colors duration-300" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900 text-sm">{info.title}</p>
+                          <p className="font-medium text-gray-900 text-sm group-hover:text-gray-800 transition-colors duration-300">{info.title}</p>
                           {info.link ? (
                             <a href={info.link} className="text-gray-600 hover:text-blue-600 transition-colors text-sm">
                               {info.info}
                             </a>
                           ) : (
-                            <p className="text-gray-600 text-sm">{info.info}</p>
+                            <p className="text-gray-600 text-sm group-hover:text-gray-700 transition-colors duration-300">{info.info}</p>
                           )}
                         </div>
                       </div>
@@ -245,20 +250,20 @@ const Contact = () => {
               </Card>
 
               {/* Reasons to Connect */}
-              <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`} style={{ transitionDelay: '600ms' }}>
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Why Connect?</h3>
-                  <div className="space-y-6">
+                <CardContent className="p-10">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-8">Why Connect?</h3>
+                  <div className="space-y-8">
                     {reasons.map((reason) => (
-                      <div key={reason.title} className="flex items-start">
-                        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                          <reason.icon className="w-4 h-4 text-gray-600" />
+                      <div key={reason.title} className="flex items-start group cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <div className="w-10 h-10 bg-gray-100/80 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0 group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-300">
+                          <reason.icon className="w-4 h-4 text-gray-600 group-hover:text-gray-800 transition-colors duration-300" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-1 text-sm">{reason.title}</h4>
-                          <p className="text-gray-600 text-xs leading-relaxed">{reason.description}</p>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-sm group-hover:text-gray-800 transition-colors duration-300">{reason.title}</h4>
+                          <p className="text-gray-600 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{reason.description}</p>
                         </div>
                       </div>
                     ))}
@@ -270,21 +275,21 @@ const Contact = () => {
 
           {/* Call to Action */}
           <div className={`text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '800ms' }}>
-            <Card className="border-0 bg-blue-600 text-white shadow-lg">
-              <CardContent className="p-12">
-                <h3 className="text-2xl font-semibold mb-4">Ready to Collaborate?</h3>
-                <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto font-light">
+            <Card className="border-0 bg-gray-900 text-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <CardContent className="p-16">
+                <h3 className="text-2xl font-semibold mb-6">Ready to Collaborate?</h3>
+                <p className="text-lg opacity-90 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
                   Whether you're looking to innovate in nutrition science, develop new products, 
                   or simply explore opportunities, let's create something amazing together.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <Button 
                     asChild
                     variant="secondary" 
                     size="lg" 
-                    className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 font-medium"
+                    className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-lg hover:shadow-xl"
                   >
                     <Link to="/about">Learn More About Me</Link>
                   </Button>
@@ -292,7 +297,7 @@ const Contact = () => {
                     asChild
                     variant="outline" 
                     size="lg" 
-                    className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 font-medium"
+                    className="border-white text-white hover:bg-white hover:text-gray-900 px-10 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium"
                   >
                     <Link to="/experience">View My Experience</Link>
                   </Button>
