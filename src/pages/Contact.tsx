@@ -50,22 +50,19 @@ const Contact = () => {
       icon: Mail,
       title: "Email",
       info: "roberta.muradlima@example.com",
-      link: "mailto:roberta.muradlima@example.com",
-      color: "from-blue-500 to-cyan-500"
+      link: "mailto:roberta.muradlima@example.com"
     },
     {
       icon: MapPin,
       title: "Location",
       info: "Zurich, Switzerland",
-      link: "",
-      color: "from-green-500 to-emerald-500"
+      link: ""
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
       info: "/in/roberta-murad-lima",
-      link: "https://linkedin.com/in/roberta-murad-lima",
-      color: "from-purple-500 to-violet-500"
+      link: "https://linkedin.com/in/roberta-murad-lima"
     }
   ];
 
@@ -88,27 +85,24 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-pink-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 py-4">
           <div className="flex justify-between items-center">
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <Link to="/" className="text-xl font-semibold text-gray-900">
               Roberta Murad Lima
             </Link>
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-10">
               {['Home', 'About', 'Experience', 'Contact'].map((item) => (
                 <Link
                   key={item}
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`text-gray-700 hover:text-blue-600 transition-colors duration-300 relative group ${
-                    item === 'Contact' ? 'text-blue-600' : ''
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    item === 'Contact' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
-                    item === 'Contact' ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
                 </Link>
               ))}
             </div>
@@ -116,47 +110,49 @@ const Contact = () => {
         </div>
       </nav>
 
-      <div className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <div className="pt-32 pb-32 px-8">
+        <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+          <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-5xl md:text-7xl font-light mb-8 text-gray-900 tracking-tight">
               Let's Connect
             </h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
               Ready to collaborate on innovative nutrition solutions? Whether you're looking for expert consultation, 
-              partnership opportunities, or just want to chat about the future of health science, I'd love to hear from you.
+              partnership opportunities, or just want to chat about the future of health science.
             </p>
           </div>
 
           {/* Contact Grid */}
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Contact Form */}
-            <Card className={`border-0 bg-white/60 backdrop-blur-sm hover:shadow-xl transition-all duration-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`} style={{ transitionDelay: '200ms' }}>
               <CardContent className="p-8">
                 <div className="flex items-center mb-8">
-                  <Send className="w-6 h-6 text-purple-600 mr-3" />
-                  <h2 className="text-2xl font-bold text-gray-900">Send a Message</h2>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <Send className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <h2 className="text-xl font-semibold text-gray-900">Send a Message</h2>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name" className="text-gray-700 font-medium">Name</Label>
+                      <Label htmlFor="name" className="text-gray-700 font-medium text-sm">Name</Label>
                       <Input
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="mt-2 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                        className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
+                      <Label htmlFor="email" className="text-gray-700 font-medium text-sm">Email</Label>
                       <Input
                         id="email"
                         name="email"
@@ -164,27 +160,27 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="mt-2 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                        className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <Label htmlFor="subject" className="text-gray-700 font-medium">Subject</Label>
+                    <Label htmlFor="subject" className="text-gray-700 font-medium text-sm">Subject</Label>
                     <Input
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="mt-2 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                      className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
                       placeholder="What's this about?"
                     />
                   </div>
                   
                   <div>
-                    <Label htmlFor="message" className="text-gray-700 font-medium">Message</Label>
+                    <Label htmlFor="message" className="text-gray-700 font-medium text-sm">Message</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -192,7 +188,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="mt-2 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                      className="mt-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 bg-white"
                       placeholder="Tell me about your project or how we can work together..."
                     />
                   </div>
@@ -200,17 +196,17 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
                         Sending...
                       </div>
                     ) : (
                       <div className="flex items-center">
                         Send Message
-                        <Send className="ml-2 w-5 h-5" />
+                        <Send className="ml-2 w-4 h-4" />
                       </div>
                     )}
                   </Button>
@@ -221,25 +217,25 @@ const Contact = () => {
             {/* Contact Info & Reasons */}
             <div className="space-y-8">
               {/* Contact Information */}
-              <Card className={`border-0 bg-white/60 backdrop-blur-sm hover:shadow-xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`} style={{ transitionDelay: '400ms' }}>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Get in Touch</h3>
                   <div className="space-y-4">
                     {contactInfo.map((info) => (
-                      <div key={info.title} className="flex items-center p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <div className={`w-10 h-10 bg-gradient-to-r ${info.color} rounded-full flex items-center justify-center mr-4`}>
-                          <info.icon className="w-5 h-5 text-white" />
+                      <div key={info.title} className="flex items-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                          <info.icon className="w-5 h-5 text-gray-600" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">{info.title}</p>
+                          <p className="font-medium text-gray-900 text-sm">{info.title}</p>
                           {info.link ? (
-                            <a href={info.link} className="text-gray-600 hover:text-purple-600 transition-colors">
+                            <a href={info.link} className="text-gray-600 hover:text-blue-600 transition-colors text-sm">
                               {info.info}
                             </a>
                           ) : (
-                            <p className="text-gray-600">{info.info}</p>
+                            <p className="text-gray-600 text-sm">{info.info}</p>
                           )}
                         </div>
                       </div>
@@ -249,18 +245,20 @@ const Contact = () => {
               </Card>
 
               {/* Reasons to Connect */}
-              <Card className={`border-0 bg-white/60 backdrop-blur-sm hover:shadow-xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              <Card className={`border-0 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`} style={{ transitionDelay: '600ms' }}>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Connect?</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Why Connect?</h3>
                   <div className="space-y-6">
                     {reasons.map((reason) => (
                       <div key={reason.title} className="flex items-start">
-                        <reason.icon className="w-6 h-6 text-purple-600 mr-4 mt-1 flex-shrink-0" />
+                        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                          <reason.icon className="w-4 h-4 text-gray-600" />
+                        </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">{reason.title}</h4>
-                          <p className="text-gray-600 text-sm">{reason.description}</p>
+                          <h4 className="font-semibold text-gray-900 mb-1 text-sm">{reason.title}</h4>
+                          <p className="text-gray-600 text-xs leading-relaxed">{reason.description}</p>
                         </div>
                       </div>
                     ))}
@@ -272,12 +270,12 @@ const Contact = () => {
 
           {/* Call to Action */}
           <div className={`text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`} style={{ transitionDelay: '800ms' }}>
-            <Card className="border-0 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+            <Card className="border-0 bg-blue-600 text-white shadow-lg">
               <CardContent className="p-12">
-                <h3 className="text-3xl font-bold mb-4">Ready to Collaborate?</h3>
-                <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+                <h3 className="text-2xl font-semibold mb-4">Ready to Collaborate?</h3>
+                <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto font-light">
                   Whether you're looking to innovate in nutrition science, develop new products, 
                   or simply explore opportunities, let's create something amazing together.
                 </p>
@@ -286,7 +284,7 @@ const Contact = () => {
                     asChild
                     variant="secondary" 
                     size="lg" 
-                    className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105"
+                    className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 font-medium"
                   >
                     <Link to="/about">Learn More About Me</Link>
                   </Button>
@@ -294,7 +292,7 @@ const Contact = () => {
                     asChild
                     variant="outline" 
                     size="lg" 
-                    className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105"
+                    className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 font-medium"
                   >
                     <Link to="/experience">View My Experience</Link>
                   </Button>
