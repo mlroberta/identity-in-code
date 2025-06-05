@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, MapPin, GraduationCap, Briefcase, Heart, ChevronDown } from 'lucide-react';
+import { ArrowRight, MapPin, GraduationCap, Briefcase, Heart, ChevronDown, Mail, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -39,16 +39,27 @@ const Index = () => {
     }
   ];
 
+  const tools = [
+    { name: "R", description: "Statistical Analysis", icon: "📊" },
+    { name: "SPSS", description: "Data Analytics", icon: "📈" },
+    { name: "Microsoft Office", description: "Productivity Suite", icon: "📋" },
+    { name: "Excel", description: "Data Management", icon: "📑" },
+    { name: "PowerBI", description: "Data Visualization", icon: "📊" },
+    { name: "Python", description: "Data Science", icon: "🐍" },
+    { name: "Tableau", description: "Analytics Platform", icon: "📊" },
+    { name: "GraphPad", description: "Scientific Graphing", icon: "📉" }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50 transition-all duration-300">
-        <div className="max-w-6xl mx-auto px-8 py-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 py-4 sm:py-6">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-medium text-gray-900 tracking-tight">
+            <div className="text-lg sm:text-xl font-medium text-gray-900 tracking-tight">
               Roberta Murad Lima
             </div>
-            <div className="hidden md:flex space-x-12">
+            <div className="hidden md:flex space-x-8 lg:space-x-12">
               {['Home', 'About', 'Experience', 'Contact'].map((item) => (
                 <Link
                   key={item}
@@ -64,33 +75,33 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-40 px-8">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-32 lg:pb-40 px-4 sm:px-8">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-6xl md:text-8xl font-light mb-12 text-gray-900 tracking-tight leading-none">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-light mb-8 sm:mb-12 text-gray-900 tracking-tight leading-none">
               Nutrition &
               <br />
               Innovation
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8 font-light leading-relaxed">
               Bridging the gap between cutting-edge research and real-world health solutions. 
               From ETH Zurich to industry leadership.
             </p>
-            <div className="flex items-center justify-center space-x-2 mb-16 text-gray-500">
+            <div className="flex items-center justify-center space-x-2 mb-12 sm:mb-16 text-gray-500">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Zurich, Switzerland</span>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-32">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-20 sm:mb-32">
               <Link to="/about">
-                <Button size="lg" className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-6 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95">
+                <Button size="lg" className="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-white px-8 sm:px-10 py-4 sm:py-6 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95">
                   Discover My Journey
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="px-10 py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg">
                   Let's Connect
                 </Button>
               </Link>
@@ -98,7 +109,7 @@ const Index = () => {
           </div>
 
           {/* Highlights Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-32">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 sm:mb-32">
             {highlights.map((highlight, index) => (
               <Card 
                 key={highlight.title}
@@ -107,23 +118,96 @@ const Index = () => {
                 }`}
                 style={{ transitionDelay: `${200 + index * 150}ms` }}
               >
-                <CardContent className="p-10 text-center">
-                  <div className="w-14 h-14 mx-auto mb-8 rounded-full bg-gray-100/80 flex items-center justify-center group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-500">
-                    <highlight.icon className={`w-7 h-7 ${highlight.color} transition-transform duration-300 group-hover:scale-110`} />
+                <CardContent className="p-6 sm:p-8 lg:p-10 text-center">
+                  <div className="w-12 sm:w-14 h-12 sm:h-14 mx-auto mb-6 sm:mb-8 rounded-full bg-gray-100/80 flex items-center justify-center group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-500">
+                    <highlight.icon className={`w-6 sm:w-7 h-6 sm:h-7 ${highlight.color} transition-transform duration-300 group-hover:scale-110`} />
                   </div>
-                  <h3 className="text-lg font-semibold mb-4 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{highlight.title}</h3>
+                  <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{highlight.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{highlight.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
+          {/* Tools Section */}
+          <div className={`mb-20 sm:mb-32 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`} style={{ transitionDelay: '600ms' }}>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 text-gray-900 tracking-tight">
+                Tools & Technologies
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
+                Advanced analytics and research tools for data-driven nutrition insights
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              {tools.map((tool, index) => (
+                <Card 
+                  key={tool.name}
+                  className={`group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:bg-white/80 cursor-pointer ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${800 + index * 100}ms` }}
+                >
+                  <CardContent className="p-4 sm:p-6 text-center">
+                    <div className="text-2xl sm:text-3xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {tool.icon}
+                    </div>
+                    <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-1 sm:mb-2 group-hover:text-gray-800 transition-colors duration-300">
+                      {tool.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                      {tool.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className={`text-center mb-20 sm:mb-32 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`} style={{ transitionDelay: '1000ms' }}>
+            <Card className="border-0 bg-gradient-to-br from-gray-900 to-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 overflow-hidden">
+              <CardContent className="p-8 sm:p-12 lg:p-16 text-center relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+                <div className="relative z-10">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 text-white tracking-tight leading-tight">
+                    Let's Work Together
+                  </h2>
+                  <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
+                    Ready to collaborate on innovative nutrition solutions? 
+                    Let's discuss how we can make an impact together.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <a href="mailto:roberta@example.com">
+                      <Button size="lg" className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 px-8 sm:px-10 py-4 sm:py-6 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95">
+                        <Mail className="mr-2 w-4 h-4" />
+                        Send Email
+                      </Button>
+                    </a>
+                    <a href="https://linkedin.com/in/roberta-murad-lima" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
+                        <Linkedin className="mr-2 w-4 h-4" />
+                        LinkedIn
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           {/* Scroll Indicator */}
           <div className="text-center">
             <div className="inline-block animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
-              <ChevronDown className="w-6 h-6 text-gray-400 mx-auto" />
+              <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 mx-auto" />
             </div>
-            <p className="text-gray-500 mt-3 text-sm">Scroll to explore</p>
+            <p className="text-gray-500 mt-3 text-xs sm:text-sm">Scroll to explore</p>
           </div>
         </div>
       </section>
