@@ -20,17 +20,59 @@ const Experience = () => {
   const currentRole = {
     title: "Project Manager",
     company: "Agilery AG",
-    period: "Current",
-    location: "Switzerland",
-    description: "Leading cross-functional teams in developing innovative nutrition and health products",
+    period: "09/2022 - 05/2024",
+    location: "Zurich, Switzerland",
+    description: "Led 10 client projects from ideation to execution across Europe, Africa, and South America",
     achievements: [
-      "Spearheaded product development initiatives from concept to market",
-      "Managed human trials and clinical research projects",
-      "Led cross-functional teams across multiple departments",
-      "Developed data analysis frameworks for nutrition research",
-      "Coordinated international collaborations and partnerships"
+      "Led 10 client projects from ideation to execution across Europe, Africa, and South America",
+      "Drove product development by coordinating interdisciplinary teams of up to 12 members, ensuring alignment with company brand vision, formulation, production, and compliance",
+      "Oversaw supplier selection and process optimization, reducing costs by an average of 15% per project"
     ]
   };
+
+  const previousRole = {
+    title: "Associate Project Manager",
+    company: "Agilery AG",
+    period: "03/2022 - 09/2022",
+    location: "Zurich, Switzerland",
+    description: "Expanded supplier network and supported product development initiatives",
+    achievements: [
+      "Expanded supplier network by 20%, streamlining procurement and enabling more competitive sourcing",
+      "Supported product development from concept to launch through prototyping, recipe development, and sensory testing",
+      "Prepared nutritional fact sheets, assisted with packaging specifications, and ensured regulatory compliance"
+    ]
+  };
+
+  const researchRole = {
+    title: "Research Student - Laboratory of Human Nutrition",
+    company: "ETH Zurich",
+    period: "09/2020 - 05/2021",
+    location: "Zurich, Switzerland",
+    description: "Conducted human trial research and data analysis",
+    achievements: [
+      "Conducted a human trial to assess iron absorption from edible insects in 21 women",
+      "Led recruitment, data collection, and stable isotope analysis to evaluate Tenebrio molitor as a dietary iron source",
+      "Analyzed the impact of chitin content on bioavailability using Excel, SPSS, and R"
+    ]
+  };
+
+  const certifications = [
+    {
+      title: "Integrative Nutrition Health Coach (INHC)",
+      description: "Completed holistic health coaching certification focusing on personalized nutrition and lifestyle behavior change",
+      year: "Current"
+    }
+  ];
+
+  const volunteering = [
+    {
+      title: "FoodHack Zurich Ambassador",
+      organization: "FoodHack",
+      period: "08/2022 - 08/2024",
+      location: "Zurich, Switzerland",
+      description: "Co-organized local events and meetups to connect food-tech professionals and support the Zurich innovation ecosystem as part of a global ambassador team"
+    }
+  ];
 
   const expertise = [
     {
@@ -52,29 +94,6 @@ const Experience = () => {
       category: "Research & Analysis",
       icon: TrendingUp,
       skills: ["Data Analysis", "Human Trials", "Scientific Writing", "Statistical Methods"]
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "ETH Zurich Excellence",
-      description: "Completed MAS in Nutrition and Health with distinction",
-      year: "2023"
-    },
-    {
-      title: "IOC Sports Nutrition Certification",
-      description: "International Olympic Committee diploma in Sports Nutrition",
-      year: "2023"
-    },
-    {
-      title: "Cross-Cultural Leadership",
-      description: "Successfully managed international teams across 4 languages",
-      year: "Ongoing"
-    },
-    {
-      title: "Innovation Projects",
-      description: "Led multiple product development initiatives from concept to market",
-      year: "2022-Present"
     }
   ];
 
@@ -133,7 +152,7 @@ const Experience = () => {
                     <p className="text-gray-500 text-sm mt-1">{currentRole.location} • {currentRole.period}</p>
                   </div>
                 </div>
-                <Badge className="bg-green-100/80 text-green-800 border-green-200 hover:bg-green-200/80 transition-all duration-300">Current Role</Badge>
+                <Badge className="bg-blue-100/80 text-blue-800 border-blue-200 hover:bg-blue-200/80 transition-all duration-300">Most Recent</Badge>
               </div>
               
               <p className="text-gray-700 mb-10 leading-relaxed text-lg">{currentRole.description}</p>
@@ -155,10 +174,84 @@ const Experience = () => {
             </CardContent>
           </Card>
 
+          {/* Previous Role */}
+          <Card className={`mb-20 border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`} style={{ transitionDelay: '300ms' }}>
+            <CardContent className="p-12">
+              <div className="flex items-start justify-between mb-10">
+                <div className="flex items-center">
+                  <div className="w-14 h-14 bg-green-100/80 rounded-full flex items-center justify-center mr-8 hover:scale-110 hover:bg-green-200/80 transition-all duration-300">
+                    <Users className="w-7 h-7 text-green-600" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-3 hover:text-gray-700 transition-colors duration-300">{previousRole.title}</h2>
+                    <p className="text-lg text-green-600 font-medium hover:text-green-700 transition-colors duration-300">{previousRole.company}</p>
+                    <p className="text-gray-500 text-sm mt-1">{previousRole.location} • {previousRole.period}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-gray-700 mb-10 leading-relaxed text-lg">{previousRole.description}</p>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                  <TrendingUp className="w-5 h-5 mr-3 text-green-600" />
+                  Key Achievements
+                </h3>
+                <ul className="space-y-4">
+                  {previousRole.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start group">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-3 mr-6 flex-shrink-0 group-hover:scale-150 transition-transform duration-300" />
+                      <span className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-300">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Research Role */}
+          <Card className={`mb-20 border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`} style={{ transitionDelay: '400ms' }}>
+            <CardContent className="p-12">
+              <div className="flex items-start justify-between mb-10">
+                <div className="flex items-center">
+                  <div className="w-14 h-14 bg-purple-100/80 rounded-full flex items-center justify-center mr-8 hover:scale-110 hover:bg-purple-200/80 transition-all duration-300">
+                    <Award className="w-7 h-7 text-purple-600" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-3 hover:text-gray-700 transition-colors duration-300">{researchRole.title}</h2>
+                    <p className="text-lg text-purple-600 font-medium hover:text-purple-700 transition-colors duration-300">{researchRole.company}</p>
+                    <p className="text-gray-500 text-sm mt-1">{researchRole.location} • {researchRole.period}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-gray-700 mb-10 leading-relaxed text-lg">{researchRole.description}</p>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                  <TrendingUp className="w-5 h-5 mr-3 text-purple-600" />
+                  Key Achievements
+                </h3>
+                <ul className="space-y-4">
+                  {researchRole.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start group">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-3 mr-6 flex-shrink-0 group-hover:scale-150 transition-transform duration-300" />
+                      <span className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-300">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Expertise Areas */}
           <div className={`mb-20 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`} style={{ transitionDelay: '400ms' }}>
+          }`} style={{ transitionDelay: '500ms' }}>
             <div className="text-center mb-16">
               <h2 className="text-3xl font-semibold text-gray-900 mb-6">Areas of Expertise</h2>
               <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -189,35 +282,53 @@ const Experience = () => {
             </div>
           </div>
 
-          {/* Achievements Timeline */}
-          <div className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`} style={{ transitionDelay: '600ms' }}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-semibold text-gray-900 mb-6">Key Achievements</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                Milestones that showcase my commitment to excellence and continuous growth
-              </p>
-            </div>
-            
-            <div className="space-y-8">
-              {achievements.map((achievement, index) => (
-                <Card key={achievement.title} className="border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-500 hover:-translate-y-2 cursor-pointer group">
-                  <CardContent className="p-10">
-                    <div className="flex items-start">
-                      <div className="w-3 h-3 bg-blue-600 rounded-full mt-3 mr-8 flex-shrink-0 group-hover:scale-150 transition-transform duration-300" />
-                      <div className="flex-1">
-                        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{achievement.title}</h3>
-                          <Badge variant="outline" className="w-fit mt-3 md:mt-0 bg-gray-50/80 border-gray-200 hover:bg-gray-100/80 hover:border-gray-300 transition-all duration-300">{achievement.year}</Badge>
-                        </div>
-                        <p className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-300">{achievement.description}</p>
+          {/* Additional Sections Grid */}
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Certifications */}
+            <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`} style={{ transitionDelay: '600ms' }}>
+              <CardContent className="p-10">
+                <div className="text-center mb-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Certifications</h3>
+                </div>
+                <div className="space-y-6">
+                  {certifications.map((cert, index) => (
+                    <div key={cert.title} className="p-6 rounded-2xl bg-gray-50/80 hover:bg-gray-100/80 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+                      <div className="flex justify-between items-start mb-3">
+                        <h4 className="font-semibold text-gray-900">{cert.title}</h4>
+                        <Badge variant="outline" className="bg-white/80 border-gray-200 text-gray-700">{cert.year}</Badge>
                       </div>
+                      <p className="text-sm text-gray-600 leading-relaxed">{cert.description}</p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Volunteering */}
+            <Card className={`border-0 bg-white/60 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-700 hover:-translate-y-2 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`} style={{ transitionDelay: '700ms' }}>
+              <CardContent className="p-10">
+                <div className="text-center mb-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Volunteering</h3>
+                </div>
+                <div className="space-y-6">
+                  {volunteering.map((vol, index) => (
+                    <div key={vol.title} className="p-6 rounded-2xl bg-gray-50/80 hover:bg-gray-100/80 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+                      <div className="flex justify-between items-start mb-3">
+                        <h4 className="font-semibold text-gray-900">{vol.title}</h4>
+                        <Badge variant="outline" className="bg-white/80 border-gray-200 text-gray-700">{vol.period}</Badge>
+                      </div>
+                      <p className="text-sm text-blue-600 font-medium mb-2">{vol.organization}</p>
+                      <p className="text-xs text-gray-500 mb-3">{vol.location}</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{vol.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

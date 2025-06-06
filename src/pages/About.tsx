@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,22 +18,28 @@ const About = () => {
 
   const education = [
     {
-      degree: "MAS in Nutrition and Health",
-      institution: "ETH Zurich",
-      year: "2022-2023",
-      description: "Advanced studies in nutrition science and health applications"
-    },
-    {
       degree: "IOC Diploma in Sports Nutrition",
       institution: "International Olympic Committee",
-      year: "2023",
-      description: "Specialized certification in sports nutrition and performance"
+      year: "02/2023 - 12/2024",
+      description: "Specialized certification covering nutritional strategies for athletic performance, recovery, hydration, and supplementation"
+    },
+    {
+      degree: "MAS in Nutrition and Health",
+      institution: "ETH Zurich (Swiss Federal Institute of Technology)",
+      year: "09/2019 - 02/2021",
+      description: "Advanced studies focusing on clinical and public health nutrition, nutrigenomics, toxicology, and dietary assessment methods"
     },
     {
       degree: "MSc in Environmental Engineering",
-      institution: "University",
-      year: "Previous",
-      description: "Technical foundation in environmental systems and analysis"
+      institution: "ETH Zurich (Swiss Federal Institute of Technology)",
+      year: "09/2016 - 04/2019",
+      description: "Specialized in ecological systems design, process engineering, and urban water/waste management"
+    },
+    {
+      degree: "BSc in Environmental Engineering",
+      institution: "FAESA (Faculdade Espírito Santense)",
+      year: "01/2011 - 07/2016",
+      description: "Foundation in environmental systems and engineering principles"
     }
   ];
 
@@ -42,7 +47,7 @@ const About = () => {
     { name: "Portuguese", level: "Native", flag: "🇧🇷" },
     { name: "English", level: "Proficient", flag: "🇺🇸" },
     { name: "German", level: "Advanced", flag: "🇩🇪" },
-    { name: "Spanish", level: "Proficient", flag: "🇪🇸" }
+    { name: "Spanish", level: "Advanced", flag: "🇪🇸" }
   ];
 
   const interests = [
