@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -54,8 +53,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      info: "roberta.muradlima@example.com",
-      link: "mailto:roberta.muradlima@example.com"
+      info: "robertamurad@gmail.com",
+      link: "mailto:robertamurad@gmail.com"
     },
     {
       icon: MapPin,
@@ -66,26 +65,8 @@ const Contact = () => {
     {
       icon: Linkedin,
       title: "LinkedIn",
-      info: "/in/roberta-murad-lima",
-      link: "https://linkedin.com/in/roberta-murad-lima"
-    }
-  ];
-
-  const reasons = [
-    {
-      icon: Coffee,
-      title: "Collaboration Opportunities",
-      description: "Let's discuss potential partnerships in nutrition and health innovation"
-    },
-    {
-      icon: Heart,
-      title: "Speaking Engagements",
-      description: "Available for conferences, workshops, and educational events"
-    },
-    {
-      icon: Send,
-      title: "Consulting Services",
-      description: "Expert guidance in sports nutrition and product development"
+      info: "/in/robertamuradlima",
+      link: "https://www.linkedin.com/in/robertamuradlima/"
     }
   ];
 
@@ -256,7 +237,23 @@ const Contact = () => {
                 <CardContent className="p-10">
                   <h3 className="text-xl font-semibold text-gray-900 mb-8">Why Connect?</h3>
                   <div className="space-y-8">
-                    {reasons.map((reason) => (
+                    {[
+                      {
+                        icon: Coffee,
+                        title: "Collaboration Opportunities",
+                        description: "Let's discuss potential partnerships in nutrition and health innovation"
+                      },
+                      {
+                        icon: Heart,
+                        title: "Speaking Engagements",
+                        description: "Available for conferences, workshops, and educational events"
+                      },
+                      {
+                        icon: Send,
+                        title: "Consulting Services",
+                        description: "Expert guidance in sports nutrition and product development"
+                      }
+                    ].map((reason) => (
                       <div key={reason.title} className="flex items-start group cursor-pointer hover:scale-[1.02] transition-transform duration-300">
                         <div className="w-10 h-10 bg-gray-100/80 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0 group-hover:scale-110 group-hover:bg-gray-200/80 transition-all duration-300">
                           <reason.icon className="w-4 h-4 text-gray-600 group-hover:text-gray-800 transition-colors duration-300" />
@@ -297,7 +294,7 @@ const Contact = () => {
                     asChild
                     variant="outline" 
                     size="lg" 
-                    className="border-white text-white hover:bg-white hover:text-gray-900 px-10 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium"
+                    className="border-white text-white bg-transparent hover:bg-white hover:text-gray-900 px-10 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium"
                   >
                     <Link to="/experience">View My Experience</Link>
                   </Button>
