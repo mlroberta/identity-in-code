@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, MapPin, GraduationCap, Briefcase, Heart, ChevronDown, Mail, Linkedin } from 'lucide-react';
+import { ArrowRight, MapPin, GraduationCap, Briefcase, Heart, Mail, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -16,13 +17,6 @@ const Index = () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
-
-  const scrollToSection = () => {
-    const nextSection = document.querySelector('#highlights-section');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const highlights = [
     {
@@ -103,7 +97,7 @@ const Index = () => {
                 </Button>
               </Link>
               <Link to="/experience">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg text-gray-900">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto text-gray-900 bg-white hover:bg-gray-50 border-gray-300 hover:border-gray-400 px-8 sm:px-10 py-4 sm:py-6 rounded-full transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg">
                   View My Experience
                 </Button>
               </Link>
@@ -170,7 +164,7 @@ const Index = () => {
           </div>
 
           {/* CTA Section */}
-          <div className={`text-center mb-20 sm:mb-32 transition-all duration-1000 ${
+          <div className={`text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '1000ms' }}>
             <Card className="border-0 bg-gradient-to-br from-gray-900 to-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 overflow-hidden">
@@ -193,7 +187,7 @@ const Index = () => {
                       </Button>
                     </a>
                     <a href="https://www.linkedin.com/in/robertamuradlima/" target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white/50 text-white bg-white/10 hover:bg-white/20 hover:border-white/70 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
+                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white text-white bg-white/10 hover:bg-white/20 hover:border-white transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
                         <Linkedin className="mr-2 w-4 h-4" />
                         LinkedIn
                       </Button>
@@ -202,17 +196,6 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="text-center">
-            <div 
-              className="inline-block animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
-              onClick={scrollToSection}
-            >
-              <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 mx-auto" />
-            </div>
-            <p className="text-gray-500 mt-3 text-xs sm:text-sm">Scroll to explore</p>
           </div>
         </div>
       </section>
