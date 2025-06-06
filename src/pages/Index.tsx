@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,6 +16,13 @@ const Index = () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
+
+  const scrollToSection = () => {
+    const nextSection = document.querySelector('#highlights-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const highlights = [
     {
@@ -96,16 +102,16 @@ const Index = () => {
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link to="/contact">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg">
-                  Let's Connect
+              <Link to="/experience">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium shadow-sm hover:shadow-lg text-gray-900">
+                  View My Experience
                 </Button>
               </Link>
             </div>
           </div>
 
           {/* Highlights Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 sm:mb-32">
+          <div id="highlights-section" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 sm:mb-32">
             {highlights.map((highlight, index) => (
               <Card 
                 key={highlight.title}
@@ -187,7 +193,7 @@ const Index = () => {
                       </Button>
                     </a>
                     <a href="https://www.linkedin.com/in/robertamuradlima/" target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
+                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white/50 text-white bg-white/10 hover:bg-white/20 hover:border-white/70 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
                         <Linkedin className="mr-2 w-4 h-4" />
                         LinkedIn
                       </Button>
@@ -200,7 +206,10 @@ const Index = () => {
 
           {/* Scroll Indicator */}
           <div className="text-center">
-            <div className="inline-block animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
+            <div 
+              className="inline-block animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
+              onClick={scrollToSection}
+            >
               <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 mx-auto" />
             </div>
             <p className="text-gray-500 mt-3 text-xs sm:text-sm">Scroll to explore</p>

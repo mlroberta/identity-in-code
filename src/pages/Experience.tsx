@@ -22,9 +22,9 @@ const Experience = () => {
     company: "Agilery AG",
     period: "09/2022 - 05/2024",
     location: "Zurich, Switzerland",
-    description: "Led 10 client projects from ideation to execution across Europe, Africa, and South America",
+    description: "Managed multiple client projects across diverse markets while coordinating interdisciplinary teams",
     achievements: [
-      "Led 10 client projects from ideation to execution across Europe, Africa, and South America",
+      "Successfully managed 10 client projects from concept to completion across Europe, Africa, and South America",
       "Drove product development by coordinating interdisciplinary teams of up to 12 members, ensuring alignment with company brand vision, formulation, production, and compliance",
       "Oversaw supplier selection and process optimization, reducing costs by an average of 15% per project"
     ]
