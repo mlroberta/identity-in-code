@@ -28,7 +28,7 @@ const Index = () => {
     {
       icon: Briefcase,
       title: "Project Manager",
-      description: "Leading innovation at Agilery AG",
+      description: "Innovation experience at Agilery AG",
       color: "text-green-600"
     },
     {
@@ -43,11 +43,7 @@ const Index = () => {
     { name: "R", description: "Statistical Analysis", icon: "📊" },
     { name: "SPSS", description: "Data Analytics", icon: "📈" },
     { name: "Microsoft Office", description: "Productivity Suite", icon: "📋" },
-    { name: "Excel", description: "Data Management", icon: "📑" },
-    { name: "PowerBI", description: "Data Visualization", icon: "📊" },
-    { name: "Python", description: "Data Science", icon: "🐍" },
-    { name: "Tableau", description: "Analytics Platform", icon: "📊" },
-    { name: "GraphPad", description: "Scientific Graphing", icon: "📉" }
+    { name: "Asana", description: "Project Management", icon: "📋" }
   ];
 
   return (
@@ -142,7 +138,7 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               {tools.map((tool, index) => (
                 <Card 
                   key={tool.name}
@@ -184,13 +180,13 @@ const Index = () => {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                    <a href="mailto:roberta@example.com">
+                    <a href="mailto:robertamurad@gmail.com">
                       <Button size="lg" className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 px-8 sm:px-10 py-4 sm:py-6 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95">
                         <Mail className="mr-2 w-4 h-4" />
                         Send Email
                       </Button>
                     </a>
-                    <a href="https://linkedin.com/in/roberta-murad-lima" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/robertamuradlima/" target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-6 rounded-full border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 font-medium">
                         <Linkedin className="mr-2 w-4 h-4" />
                         LinkedIn

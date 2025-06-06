@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -91,7 +92,7 @@ const About = () => {
               About Me
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-              A passionate nutrition scientist and project manager with a unique blend of academic excellence 
+              A passionate nutrition scientist with a unique blend of academic excellence 
               and industry experience.
             </p>
           </div>
@@ -116,11 +117,12 @@ const About = () => {
                 <p>
                   Pursuing advanced studies at ETH Zurich opened doors to cutting-edge research in nutrition science, 
                   while my IOC certification in Sports Nutrition allowed me to specialize in performance optimization. 
-                  Today, I bridge the gap between academic research and real-world solutions as a Project Manager at Agilery AG.
+                  My experience as a Project Manager at Agilery AG taught me how to bridge the gap between academic research and real-world solutions.
                 </p>
                 <p>
                   I believe in the power of evidence-based nutrition to transform lives, whether it's optimizing athletic 
-                  performance or developing innovative health products that make a meaningful difference in people's daily lives.
+                  performance or developing innovative health products that make a meaningful difference in people's daily lives. 
+                  I'm currently seeking new opportunities to apply my expertise in nutrition science and project management.
                 </p>
               </div>
             </CardContent>
