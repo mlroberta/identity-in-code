@@ -34,3 +34,8 @@ jobs:
           publish_dir: ./dist
           cname: https://identity-in-code.lovable.app/
           force_orphan: true
+
+echo "# trigger deploy" >> README.md
+git add README.md
+git commit -m "trigger deploy"
+git push origin main
