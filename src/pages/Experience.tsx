@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -60,7 +59,7 @@ const Experience = () => {
     {
       title: "Integrative Nutrition Health Coach (INHC)",
       description: "Completed holistic health coaching certification focusing on personalized nutrition and lifestyle behavior change",
-      year: "Current"
+      year: "2020-2021"
     }
   ];
 
