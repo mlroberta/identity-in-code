@@ -59,7 +59,7 @@ const Experience = () => {
     {
       title: "Integrative Nutrition Health Coach (INHC)",
       description: "Completed holistic health coaching certification focusing on personalized nutrition and lifestyle behavior change",
-      year: "2020-2021"
+      year: "03/2020 - 04/2021"
     }
   ];
 
