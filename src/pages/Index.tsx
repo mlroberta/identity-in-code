@@ -13,6 +13,15 @@ const Index = () => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
     
+    // SEO: Update document title dynamically
+    document.title = 'Roberta Murad Lima - Nutrition Scientist & Innovation Expert | ETH Zurich Graduate';
+    
+    // SEO: Add meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Roberta Murad Lima - Nutrition scientist and innovation expert with ETH Zurich MAS degree and IOC sports nutrition certification. Specializing in evidence-based nutrition solutions.');
+    }
+    
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
@@ -80,8 +89,8 @@ const Index = () => {
               Innovation
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8 font-light leading-relaxed">
-              Bridging the gap between cutting-edge research and real-world health solutions. 
-              From ETH Zurich to industry leadership.
+              Transforming evidence-based nutrition science into innovative health solutions. 
+              Combining academic excellence with practical industry applications.
             </p>
             <div className="flex items-center justify-center space-x-2 mb-12 sm:mb-16 text-gray-500">
               <MapPin className="w-4 h-4" />
